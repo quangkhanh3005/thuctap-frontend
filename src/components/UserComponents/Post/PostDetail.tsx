@@ -1,5 +1,5 @@
 "use client";
-
+import parse from "html-react-parser";
 import React, { useEffect, useState } from "react";
 import { PostDTO } from "@/types/Post";
 import UserFollowItem from "@/components/UserComponents/User/UserFollowItem";
@@ -41,10 +41,10 @@ const PostDetail = ({ postDetail }: PostDetailProps) => {
         </div>
       )}
       <div className="flex justify-between">
-        <div className="text-base text-gray-500 mb-6">
+        <div className="text-base text-gray-500 mb-6 mt-4">
           <span>
             Thời Gian Đăng:{" "}
-            {new Date(postDetail.createAt).toLocaleString("vi-VN")}
+            {postDetail.browsedAt?new Date(postDetail.browsedAt).toLocaleString("vi-VN"):new Date(postDetail.createAt).toLocaleString("vi-VN")}
           </span>
         </div>
         <div className="relative inline-block">
@@ -75,7 +75,7 @@ const PostDetail = ({ postDetail }: PostDetailProps) => {
         </div>):""}
       </div>
       <div className="leading-relaxed text-lg whitespace-pre-line text-justify mb-8">
-        {postDetail.content}
+        {parse(postDetail.content)}
       </div>
       <div className="text-right text-base text-black mb-8">
         {postDetail.user.username}

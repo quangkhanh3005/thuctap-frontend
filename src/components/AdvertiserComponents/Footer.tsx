@@ -32,8 +32,8 @@ const Footer = () => {
   if (ads.length === 0) return null;
 
   return (
-    <div className="bg-white py-2 px-4 shadow rounded-b-2xl mb-4">
-      <div className="flex gap-8 justify-center">
+    <div className="hidden md:block bg-white p-4 shadow rounded-2xl mb-4 mt-8">
+      <div className="flex gap-2 justify-center">
         {ads.map((ad) => (
           <AdCard key={ad.id} ad={ad} />
         ))}

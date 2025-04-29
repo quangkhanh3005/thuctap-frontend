@@ -10,12 +10,10 @@ const LayoutAdmin = ({ children }: LayoutAdminProp) => {
       <div className="fixed w-full z-20">
         <HeaderUser />
       </div>
-
       <div className="flex flex-1 pt-6">
         <div className="fixed top-16 left-0 w-64 h-[calc(100vh-4rem)] z-10">
           <SideBarAdmin />
         </div>
-        {/* Main Content */}
         <main className="flex-1 ml-64 p-4 mt-10 ">{children}</main>
       </div>
     </div>

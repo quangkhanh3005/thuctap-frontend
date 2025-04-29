@@ -10,7 +10,7 @@ const AdCard = ({ ad }: AdCardProp) => {
     }
   return (
     <div onClick={handleToLink}
-      className="w-[100px] md:w-[220px] lg:w-[300px] border rounded-lg p-2 flex-shrink-0 hover:shadow transition"
+    className="md:min-w-[100px] md:max-w[150px] lg:min-w-[200px] lg:w-auto max-w-[350px]  h-[150px] border rounded-lg p-2 flex-shrink-0 hover:shadow cursor-pointer"
     >
       {ad.image && (
         <img

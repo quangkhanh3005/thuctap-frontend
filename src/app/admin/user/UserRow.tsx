@@ -1,10 +1,15 @@
 import { UserDTO } from "@/types/User";
+import { useRouter } from "next/navigation";
 
 interface UserRowProps {
   user: UserDTO;
   stt: number;
 }
 const UserRow = ({ user, stt }: UserRowProps) => {
+  const router=useRouter();
+  const hanleActivity=()=>{
+    router.push(`/profile/${user.id}/activity`);
+  }
   return (
     <tr key={user.id}>
       <td className="px-2 py-2 border text-center">{stt}</td>
@@ -18,10 +23,10 @@ const UserRow = ({ user, stt }: UserRowProps) => {
       </td>
       <td className="px-2 py-2 border ">
         <div className="flex justify-center  space-x-3">
-          <button className="py-2 px-3 bg-blue-600 text-white rounded">
+          <button onClick={hanleActivity} className="py-2 px-3 bg-blue-600 text-white rounded cursor-pointer">
             Xem Nhật Ký Hoạt Động
           </button>
-          <button className="py-2 px-3 bg-amber-500 text-white rounded">
+          <button className="py-2 px-3 bg-amber-500 text-white rounded cursor-pointer">
             Chỉnh Sửa Quyền
           </button>
         </div>

@@ -10,6 +10,8 @@ import URLAPI from "../../../../../config";
 import Comment from "@/components/UserComponents/Comment/CommentItem";
 import CommentList from "@/components/UserComponents/Comment/CommentList";
 import CommentForm from "@/components/UserComponents/Comment/CommentForm";
+import Banner from "@/components/AdvertiserComponents/Banner";
+import Footer from "@/components/AdvertiserComponents/Footer";
 
 const PostDetailPage = () => {
   const [token, setToken] = useState("");
@@ -66,18 +68,22 @@ const PostDetailPage = () => {
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-6 text-gray-800 bg-white rounded-2xl shadow-2xl">
-      <PostDetail postDetail={post}/>
-      <div className="flex gap-x-2 justify-end items-center mt-4">
-        <span>Bạn có thích bài viết này:</span>
-        <PostLikeButton idPost={post.id} countLikes={post.countLikes} />
+    <div>
+      <Banner />
+      <div className="max-w-3xl mx-auto px-6 py-6 text-gray-800 bg-white rounded-2xl shadow-2xl">
+        <PostDetail postDetail={post} />
+        <div className="flex gap-x-2 justify-end items-center mt-4">
+          <span>Bạn có thích bài viết này:</span>
+          <PostLikeButton idPost={post.id} countLikes={post.countLikes} />
+        </div>
+        <div className="mt-4 border-b">
+          <span className="text-lg font-medium ">Bình luận</span>
+        </div>
+        <div className="mt-4">
+          <CommentList idPost={post.id} />
+        </div>
       </div>
-      <div className="mt-4 border-b">
-        <span className="text-lg font-medium ">Bình luận</span>
-      </div>
-      <div className="mt-4">
-        <CommentList idPost={post.id} />
-      </div>
+      <Footer />
     </div>
   );
 };

@@ -10,8 +10,13 @@ const AdsManagementPage = () => {
   const [ads, setAds] = useState<AdsResponse[]>([]);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const [token,setToken]=useState("");
   useEffect(() => {
     const tokenSession = sessionStorage.getItem("token");
+    if(!tokenSession){
+      return;
+    }
+    setToken(tokenSession);
     const fetchAds = async () => {
       try {
         setLoading(true);
@@ -19,6 +24,7 @@ const AdsManagementPage = () => {
           headers: { Authorization: `Bearer ${tokenSession}` },
         });
         setAds(response.data);
+        console.log(response.data)
       } catch (error) {
         console.error(error);
       } finally {
@@ -56,12 +62,13 @@ const AdsManagementPage = () => {
               <th className="px-4 py-2 border">Ngày kết thúc</th>
               <th className="px-4 py-2 border">Trạng thái</th>
               <th className="px-4 py-2 border">Vị trí hiển thị</th>
+              <th className="px-4 py-2 border">Số lần nhấn</th>
               <th className="px-4 py-2 border">Hành động</th>
             </tr>
           </thead>
           <tbody className="text-sm text-gray-800">
             {ads.map((ad) => (
-              <AdRow key={ad.id} ad={ad} />
+              <AdRow key={ad.id} ad={ad} token={token} />
             ))}
           </tbody>
         </table>

@@ -7,16 +7,21 @@ import { useEffect, useState } from "react";
 const HeaderUser = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [idUser, setIsUser] = useState("");
+  const [roles, setRoles] = useState<string[]>([]);
   const router = useRouter();
   useEffect(() => {
     const idUserCurrent = sessionStorage.getItem("idUser");
+    const roleSession = sessionStorage.getItem("roles");
     if (!idUserCurrent) {
-        router.push("/login");
-        return;
+      router.push("/login");
+      return;
+    }
+    if (roleSession) {
+      setRoles(JSON.parse(roleSession));
     }
     setIsUser(idUserCurrent);
   }, []);
- 
+
   const handleDropDown = () => {
     setIsOpen(!isOpen);
   };
@@ -48,18 +53,30 @@ const HeaderUser = () => {
               >
                 <Link href={`/profile/${idUser}`}>Trang Cá Nhân</Link>
               </div>
-              <div
-                className="block px-6 py-4 text-base hover:bg-gray-100 text-black"
-                onClick={() => setIsOpen(false)}
-              >
-                <Link href={`/admin`}>Trang Quản Trị</Link>
-              </div>
+              {(roles.includes("Admin") ||
+                roles.includes("Editor") ||
+                roles.includes("Moderator")) && (
+                <div
+                  className="block px-6 py-4 text-base hover:bg-gray-100 text-black"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Link href={`/admin`}>Trang Quản Trị</Link>
+                </div>
+              )}
               <div
                 className="block px-6 py-4 text-base hover:bg-gray-100 text-black"
                 onClick={() => setIsOpen(false)}
               >
                 <Link href={`/report`}>Báo Cáo Của Bạn</Link>
               </div>
+              {roles.includes("Advertiser") && (
+                <div
+                  className="block px-6 py-4 text-base hover:bg-gray-100 text-black"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Link href={`/ads-management`}>Trang Quảng Cáo</Link>
+                </div>
+              )}
               <div
                 className="block px-6 py-4 text-base hover:bg-gray-100 text-black "
                 onClick={handleLogOut}

@@ -19,6 +19,9 @@ export interface AdsResponse {
   image: string;
   advertiser: BasicUserDTO;
   adPlaces: AdPlaces;
+  countClicks:number;
+  completed:boolean;
+  idPayment:number;
 }
 
 export interface AdsPaymentDTO{

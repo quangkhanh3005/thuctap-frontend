@@ -13,6 +13,12 @@ const MyProfile = ({ user }: MyProfileProps) => {
   const handleFollowing = () => {
     router.push(`/profile/${user.id}/following`);
   };
+  const hanldeToEdit=()=>{
+    router.push(`/profile/${user.id}/edit`);
+  }
+  const hanldeToActivity=()=>{
+    router.push(`/profile/${user.id}/activity`);
+  }
   return (
     <div className="shadow-md h-44 bg-white rounded-2xl px-6 py-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-y-4">
@@ -42,12 +48,12 @@ const MyProfile = ({ user }: MyProfileProps) => {
           </div>
         </div>
         <div className="flex space-x-4 justify-center md:justify-end">
-          <button className="bg-gray-600 hover:bg-black px-4 py-2 flex items-center gap-x-2 cursor-pointer rounded-md text-white text-base font-medium">
+        <button onClick={hanldeToActivity} className="bg-gray-600 hover:bg-black px-4 py-2 flex items-center gap-x-2 cursor-pointer rounded-md text-white text-base font-medium">
+            Xem Nhật Ký Hoạt Động
+          </button>
+          <button onClick={hanldeToEdit} className="bg-gray-600 hover:bg-black px-4 py-2 flex items-center gap-x-2 cursor-pointer rounded-md text-white text-base font-medium">
             <PencilSquareIcon className="h-5 w-5" />
             Chỉnh Sửa Thông Tin
-          </button>
-          <button className="bg-gray-600 hover:bg-black px-4 py-2 cursor-pointer rounded-md text-white text-base font-medium">
-            Trang Quản Trị
           </button>
         </div>
       </div>

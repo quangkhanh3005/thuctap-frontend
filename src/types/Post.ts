@@ -13,6 +13,7 @@ export interface PostResponse{
     categoryName:string;
     img:string;
     statusPost: PostStatus;
+    browsedAt:string;
 }
 export interface PostDTO{
     id: number;
@@ -26,4 +27,5 @@ export interface PostDTO{
     status: PostStatus;
     countLikes: number;
     countComments: number;
+    browsedAt:string;
 }

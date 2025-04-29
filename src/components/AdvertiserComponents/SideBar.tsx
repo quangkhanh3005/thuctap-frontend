@@ -1,4 +1,4 @@
-"use-client";
+"use client";
 import { AdsDTO } from "@/types/Ads";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -29,9 +29,7 @@ const SildeBar = () => {
   }, []);
 
   return (
-    <div className="w-full p-4 bg-white rounded-2xl shadow space-y-4">
-      <h3 className="text-lg font-bold">Quảng Cáo</h3>
-
+    <div className="hidden lg:block w-full p-4 bg-white rounded-2xl shadow space-y-4">
       {ads.length === 0 ? (
         <p className="text-gray-500 text-sm">Không có quảng cáo nào.</p>
       ) : (

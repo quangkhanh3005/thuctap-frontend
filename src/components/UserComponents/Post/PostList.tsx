@@ -11,7 +11,10 @@ const PostList = ({ posts }:PostListProps) => {
       {posts.length > 0 ? (
         posts.map((post) => <PostCard key={post.id} post={post} />)
       ) : (
+        <>
+        <div></div>
         <div className="text-center">Hiện không có bài viết nào!</div>
+        </>
       )}
     </div>
   );

@@ -74,6 +74,7 @@ const ReportAdminPage = () => {
     }
   };
   return (
+    <div className="container mx-auto py-4">
     <div className="flex justify-between items-center mb-6 flex-wrap mx-auto bg-white p-6 rounded shadow-xl">
       <h1 className="text-2xl font-bold text-center text-gray-800 sm:text-xl md:text-2xl lg:text-3xl w-full ">
         Quản Lý Quảng Cáo
@@ -137,6 +138,7 @@ const ReportAdminPage = () => {
       ) : (
         <div>Hiện tại không có yêu cầu quảng cáo nào</div>
       )}
+    </div>
     </div>
   );
 };

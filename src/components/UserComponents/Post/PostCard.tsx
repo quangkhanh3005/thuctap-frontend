@@ -7,20 +7,15 @@ interface PostCardProps {
 }
 
 const PostCard = ({ post }: PostCardProps) => {
-  const nameStatus=()=>{
-    if(post.statusPost==="Draft"){
+  const nameStatus = () => {
+    if (post.statusPost === "Draft") {
       return "Bản Nháp";
+    } else if (post.statusPost === "Pending") {
+      return "Chờ Duyệt";
+    } else {
+      return "Công Khai";
     }
-    else if(post.statusPost==="Hidden"){
-      return"Ẩn";
-    }
-    else if(post.statusPost==="Pending"){
-      return"Chờ Duyệt";
-    }
-    else{
-      return"Công Khai";
-    }
-  }
+  };
   return (
     <Link href={`/post/${post.id}`}>
       <div className="bg-white shadow-md rounded overflow-hidden h-80 md: px-4 py-4 cursor-pointer">
@@ -50,9 +45,15 @@ const PostCard = ({ post }: PostCardProps) => {
           </div>
           <div className="flex justify-between top">
             <p>{post?.user.username}</p>
-            <p className="italic text-sm text-gray-500">
-              Ngày tạo: {new Date(post?.createAt).toLocaleString("vi-VN")}
-            </p>
+            {post.browsedAt ? (
+              <p className="italic text-sm text-gray-500">
+                Ngày đăng: {new Date(post?.browsedAt).toLocaleString("vi-VN")}
+              </p>
+            ) : (
+              <p className="italic text-sm text-gray-500">
+                Ngày tạo: {new Date(post?.createAt).toLocaleString("vi-VN")}
+              </p>
+            )}
           </div>
         </div>
       </div>

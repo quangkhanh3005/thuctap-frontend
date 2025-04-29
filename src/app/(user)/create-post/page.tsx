@@ -6,6 +6,8 @@ import { Category } from "@/types/Category";
 import { Tags } from "@/types/Tag";
 import { useRouter } from "next/navigation";
 import { ChevronLeftIcon } from "@heroicons/react/16/solid";
+import { Editor } from "@tinymce/tinymce-react";
+
 
 const CreatePostPage = () => {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -144,19 +146,31 @@ const CreatePostPage = () => {
           />
         </div>
         <div>
-          <label htmlFor="content" className="font-medium">
-            Nội dung
-          </label>
-          <textarea
-            rows={3}
-            className="w-full border rounded-sm mt-2 p-2"
-            id="content"
-            name="content"
-            placeholder="Nhập nội dung"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          />
-        </div>
+  <label htmlFor="content" className="font-medium">
+    Nội dung
+  </label>
+  <Editor
+    apiKey="984mwkxf8dtdq0mqs8ro239c1euhnedqfq54iawct34y0z9q"
+    value={content}
+    onEditorChange={(newContent) => setContent(newContent)}
+    init={{
+      height: 500,
+      menubar: false,
+      plugins: [
+        'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+        'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+        'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+      ],
+      toolbar:
+        'undo redo | formatselect | ' +
+        'bold italic backcolor | alignleft aligncenter ' +
+        'alignright alignjustify | bullist numlist outdent indent | ' +
+        'removeformat | help',
+      content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+    }}
+  />
+</div>
+
         <div>
           <label htmlFor="category" className="font-medium">
             Danh mục

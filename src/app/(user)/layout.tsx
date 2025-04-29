@@ -14,10 +14,10 @@ const UserLayout = ({ children }: Props) => {
   return (
     <div>
       <HeaderUser />
-      <Navigation/>
-      <Banner/>
-      <div className="bg-gray-50 py-6 px-6 min-h-screen">{children}</div>
-      <Footer/>
+      <div className="bg-gray-50 py-6 px-6 min-h-screen">
+        <Navigation />
+        {children}
+      </div>
     </div>
   );
 };

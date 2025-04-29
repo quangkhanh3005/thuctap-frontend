@@ -150,7 +150,7 @@ const CreatePostPage = () => {
     Nội dung
   </label>
   <Editor
-    apiKey="984mwkxf8dtdq0mqs8ro239c1euhnedqfq54iawct34y0z9q"
+    apiKey=""
     value={content}
     onEditorChange={(newContent) => setContent(newContent)}
     init={{
